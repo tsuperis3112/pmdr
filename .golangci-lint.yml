@@ -1,0 +1,54 @@
+
+# .golangci-lint.yml
+# Version 2 configuration for golangci-lint
+
+run:
+  # Timeout for analysis, e.g. 30s, 5m. Default is 1m.
+  timeout: 5m
+  # Go version to use.
+  go: "1.24"
+
+linters:
+  # Disable all linters by default and enable only the selected ones.
+  disable-all: true
+  enable:
+    # Core linters
+    - govet
+    - errcheck
+    - staticcheck
+    - unused
+
+    # Formatting and style
+    - gofmt
+    - goimports
+    - stylecheck
+
+    # Code complexity and quality
+    - gocritic
+    - gocyclo
+
+    # Best practices
+    - bodyclose
+    - exportloopref
+    - unconvert
+    - unparam
+
+linters-settings:
+  gofmt:
+    # Simplify code: `gofmt -s`
+    simplify: true
+  goimports:
+    # Put local imports after 3rd-party packages.
+    local-prefixes: github.com/tsuperis3112/pmdr
+  gocyclo:
+    # Set a reasonable complexity limit.
+    min-complexity: 15
+
+issues:
+  # Exclude default exclusions, to have full control.
+  exclude-use-default: false
+  # Maximum issues per linter.
+  max-issues-per-linter: 0
+  # Maximum count of issues with the same text.
+  max-same-issues: 0
+
